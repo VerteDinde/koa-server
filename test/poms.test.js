@@ -8,8 +8,9 @@ describe('Poms Koa API', () => {
 
   it('GET/ all poms', () => {
     return request.get('api/poms')
-    .then(res => {
-      const poms = res.body;
+    .then(ctx => {
+      console.log(ctx.body);
+      const poms = ctx.body;
       assert.deepEqual(poms, []);
     });
   });
