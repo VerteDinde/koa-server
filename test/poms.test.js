@@ -7,12 +7,14 @@ describe('Poms Koa API', () => {
   before(db.drop);
 
   it('GET/ all poms', () => {
-    return request.get('/api/poms')
-    .then(ctx => {
-      console.log(ctx.body);
-      const poms = ctx.body;
-      assert.deepEqual(poms, []);
+    request.get('/', async (ctx) => {
+      const pom = await Pom.findById(sessionId);
+      ctx.body = `Hello, ${pom.name}!`;
     });
+  });
+
+  it('POST/ a new pom', () => {
+    
   });
 
 });
